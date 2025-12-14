@@ -81,17 +81,30 @@ Jeu cadeau interactif pour le restaurant Peperoncino
     </div>
   </div>
 
-  <script>
-    const cadeaux = [
-      "🎉 10% de réduction sur la note",
-      "🍰 1 dessert maison offert",
-      "🍹 1 cocktail sans alcool offert"
-    ];
+  <button id="decouvrir" style="display:none;" onclick="tirage()">Découvrir mon cadeau</button>
 
-    function tirage() {
-      const hasard = Math.floor(Math.random() * cadeaux.length);
-      document.getElementById("resultat").innerText = cadeaux[hasard];
-    }
+<script>
+const cadeaux = [
+  "🎉 10% de réduction sur la note",
+  "🍰 1 dessert maison offert",
+  "🍹 1 cocktail sans alcool offert"
+];
+
+let dejaRecupere = false; // variable pour bloquer le tirage multiple
+
+function tirage() {
+  if (dejaRecupere) {
+    alert("Vous avez déjà récupéré votre cadeau !");
+    return;
+  }
+
+  const hasard = Math.floor(Math.random() * cadeaux.length);
+  document.getElementById("resultat").innerText = cadeaux[hasard];
+
+  dejaRecupere = true; // bloque les futurs clics
+  document.getElementById("decouvrir").disabled = true; // désactive le bouton
+}
+</script>
 
     // Affiche le bouton "Découvrir mon cadeau" après clic sur le lien Google Maps
     document.getElementById("avisButton").addEventListener("click", function(){
