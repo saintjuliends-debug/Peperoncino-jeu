@@ -1,5 +1,5 @@
 # Peperoncino-jeu
-Jeu cadeau interactif pour restaurant (type BoxMysteryGift). Page web gratuite en HTML / CSS / JavaScript permettant aux clients de découvrir un cadeau aléatoire (réduction, dessert, boisson). Idéal pour utilisation via QR code en restaurant.
+Jeu cadeau interactif pour le restaurant Peperoncino
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -30,7 +30,7 @@ Jeu cadeau interactif pour restaurant (type BoxMysteryGift). Page web gratuite e
       margin-bottom: 10px;
     }
 
-    button {
+    button, a.button-link {
       background: #e63946;
       color: white;
       border: none;
@@ -39,9 +39,11 @@ Jeu cadeau interactif pour restaurant (type BoxMysteryGift). Page web gratuite e
       border-radius: 10px;
       cursor: pointer;
       margin-top: 20px;
+      text-decoration: none;
+      display: inline-block;
     }
 
-    button:hover {
+    button:hover, a.button-link:hover {
       background: #ff4d5a;
     }
 
@@ -64,9 +66,12 @@ Jeu cadeau interactif pour restaurant (type BoxMysteryGift). Page web gratuite e
   <div class="box">
     <h1>🎁 Cadeau Mystère</h1>
     <p>Bienvenue chez <strong>Peperoncino</strong><br>
-    Cliquez pour découvrir votre cadeau !</p>
+    Laissez un avis sur Google Maps pour découvrir votre cadeau !</p>
 
-    <button onclick="tirage()">Découvrir mon cadeau</button>
+    <a href="https://www.google.com/maps/search/Peperoncino/?utm_campaign=ml-sul" 
+       target="_blank" class="button-link" id="avisButton">Laisser un avis</a>
+
+    <button id="decouvrir" style="display:none;" onclick="tirage()">Découvrir mon cadeau</button>
 
     <div id="resultat"></div>
 
@@ -87,6 +92,11 @@ Jeu cadeau interactif pour restaurant (type BoxMysteryGift). Page web gratuite e
       const hasard = Math.floor(Math.random() * cadeaux.length);
       document.getElementById("resultat").innerText = cadeaux[hasard];
     }
+
+    // Affiche le bouton "Découvrir mon cadeau" après clic sur le lien Google Maps
+    document.getElementById("avisButton").addEventListener("click", function(){
+      document.getElementById("decouvrir").style.display = "inline-block";
+    });
   </script>
 
 </body>
