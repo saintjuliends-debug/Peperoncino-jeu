@@ -1,7 +1,7 @@
+<!DOCTYPE html>
 # Peperoncino-jeu
 Jeu cadeau interactif pour le restaurant Peperoncino
 
-<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
